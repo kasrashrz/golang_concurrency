@@ -10,14 +10,14 @@ func main() {
 	results := make(chan int, 100)
 
 	go worker(jobs, results)
-
-	for i := 0; i < 100; i++ {
+	
+	for i := 0; i < 50; i++ {
 		jobs <- i
 	}
 	
 	close(jobs)
 
-	for j := 0; j< 100; j++ {
+	for j := 0; j< 50; j++ {
 		fmt.Println(<- results)
 	}
 
